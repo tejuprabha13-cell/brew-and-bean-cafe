@@ -1,5 +1,6 @@
 import React from 'react';
 import { Coffee, ArrowUp, Heart } from 'lucide-react';
+import { CAFE_CONFIG } from '../data/cafeConfig';
 
 export default function Footer({ onNavigate, onOpenLegalModal }) {
   const scrollToTop = () => {
@@ -19,17 +20,17 @@ export default function Footer({ onNavigate, onOpenLegalModal }) {
                 <Coffee className="w-5 h-5 text-[#38220F]" />
               </div>
               <span className="font-serif text-2xl font-bold tracking-tight text-[#F4EBD0]">
-                Brew &amp; Bean
+                {CAFE_CONFIG.name}
               </span>
             </div>
 
             <p className="text-xs text-[#F4EBD0]/75 leading-relaxed max-w-sm">
-              The Elevated Everyday. Bridging high-end specialty coffee craft with comfortable neighborhood hospitality. Fictional prototype built for modern web design portfolio demonstration.
+              {CAFE_CONFIG.subtitle}. Bridging high-end specialty coffee craft with comfortable neighborhood hospitality.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="https://instagram.com"
+                href={CAFE_CONFIG.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -40,7 +41,7 @@ export default function Footer({ onNavigate, onOpenLegalModal }) {
                 </svg>
               </a>
               <a
-                href="https://facebook.com"
+                href={CAFE_CONFIG.socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -51,7 +52,7 @@ export default function Footer({ onNavigate, onOpenLegalModal }) {
                 </svg>
               </a>
               <a
-                href="https://tiktok.com"
+                href={CAFE_CONFIG.socials.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="TikTok"
@@ -110,17 +111,17 @@ export default function Footer({ onNavigate, onOpenLegalModal }) {
             </h4>
             <div className="space-y-2 text-xs text-[#F4EBD0]/80">
               <div className="flex justify-between">
-                <span>Mon – Fri:</span>
-                <span className="font-bold text-[#F4EBD0]">6:30 AM – 8:00 PM</span>
+                <span>{CAFE_CONFIG.hours.weekday.days}:</span>
+                <span className="font-bold text-[#F4EBD0]">{CAFE_CONFIG.hours.weekday.open} – {CAFE_CONFIG.hours.weekday.close}</span>
               </div>
               <div className="flex justify-between">
-                <span>Sat – Sun:</span>
-                <span className="font-bold text-[#F4EBD0]">8:00 AM – 9:00 PM</span>
+                <span>{CAFE_CONFIG.hours.weekend.days}:</span>
+                <span className="font-bold text-[#F4EBD0]">{CAFE_CONFIG.hours.weekend.open} – {CAFE_CONFIG.hours.weekend.close}</span>
               </div>
               <div className="pt-2 border-t border-white/10 text-[11px] text-[#F4EBD0]/70">
-                <p>124 Artisan Way, Coffee District</p>
+                <p>{CAFE_CONFIG.location.fullAddress}</p>
                 <p className="mt-1">
-                  <a href="tel:5550198372" className="text-[#98A886] font-bold hover:underline">(555) 019-8372</a>
+                  <a href={CAFE_CONFIG.contact.phoneTel} className="text-[#98A886] font-bold hover:underline">{CAFE_CONFIG.contact.phoneDisplay}</a>
                 </p>
               </div>
             </div>

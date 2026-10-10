@@ -2,12 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MapPin, Navigation, ExternalLink, Plus, Minus, RotateCcw } from 'lucide-react';
+import { CAFE_CONFIG } from '../data/cafeConfig';
 
 export default function InteractiveMap() {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
 
-  const CAFE_COORDS = [40.718, -74.005];
+  const CAFE_COORDS = CAFE_CONFIG.location.coordinates;
 
   useEffect(() => {
     if (!mapContainerRef.current) return;
@@ -48,13 +49,13 @@ export default function InteractiveMap() {
       bounds: worldBounds
     }).addTo(map);
 
-    // Custom 21st.dev Style Coffee Marker Icon
+    // Custom Style Coffee Marker Icon
     const customIcon = L.divIcon({
       className: 'custom-cafe-marker',
       html: `
         <div style="position: relative; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: #38220F; border: 3px solid #98A886; border-radius: 50%; box-shadow: 0 10px 25px rgba(56,34,15,0.4); cursor: pointer;">
           <span style="font-size: 20px; line-height: 1;">☕</span>
-          <div style="position: absolute; -bottom: 6px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid #98A886;"></div>
+          <div style="position: absolute; bottom: -6px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid #98A886;"></div>
           <span style="position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid #98A886; animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite; opacity: 0.5;"></span>
         </div>
       `,
@@ -69,10 +70,10 @@ export default function InteractiveMap() {
     marker.bindPopup(`
       <div style="font-family: 'Montserrat', sans-serif; padding: 4px; color: #2B2B2B; min-width: 190px;">
         <span style="font-size: 10px; font-weight: 700; text-transform: uppercase; color: #98A886; letter-spacing: 0.08em; display: block; margin-bottom: 2px;">Specialty Roastery</span>
-        <h4 style="font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: #38220F; margin: 0 0 4px 0;">Brew &amp; Bean Café</h4>
-        <p style="font-size: 11px; margin: 0 0 6px 0; color: #5E564F;">124 Artisan Way, Coffee District</p>
+        <h4 style="font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: #38220F; margin: 0 0 4px 0;">${CAFE_CONFIG.name}</h4>
+        <p style="font-size: 11px; margin: 0 0 6px 0; color: #5E564F;">${CAFE_CONFIG.location.fullAddress}</p>
         <div style="font-size: 10px; background: #FAF5E6; padding: 4px 8px; border-radius: 8px; border: 1px solid rgba(56,34,15,0.1); color: #38220F; font-weight: 600;">
-          Open Today: 6:30 AM – 8:00 PM
+          Open Today: ${CAFE_CONFIG.hours.weekday.open} – ${CAFE_CONFIG.hours.weekday.close}
         </div>
       </div>
     `).openPopup();
@@ -123,10 +124,10 @@ export default function InteractiveMap() {
           </div>
           <div>
             <h4 className="font-serif text-lg font-bold text-[#38220F]">
-              Neighborhood Map &bull; Coffee District
+              Neighborhood Map &bull; {CAFE_CONFIG.location.district}
             </h4>
             <p className="text-xs text-[#5E564F]">
-              124 Artisan Way (Corner of Roaster Lane &amp; Market Square)
+              {CAFE_CONFIG.location.address} ({CAFE_CONFIG.location.crossStreets})
             </p>
           </div>
         </div>
@@ -143,7 +144,7 @@ export default function InteractiveMap() {
           </button>
 
           <a
-            href="https://maps.google.com/?q=124+Artisan+Way+Coffee+District"
+            href={CAFE_CONFIG.location.googleMapsUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="shine-hover px-4 py-2.5 rounded-full bg-[#38220F] text-[#F4EBD0] text-xs font-bold hover:bg-[#98A886] hover:text-[#38220F] transition-all flex items-center gap-1.5 shadow-sm"

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, Heart, Sprout, Flame, Users, ArrowRight } from 'lucide-react';
+import { CAFE_CONFIG } from '../data/cafeConfig';
 
 export default function StorySection({ onExploreMenu }) {
   const [activeTab, setActiveTab] = useState('roots');
@@ -24,7 +25,7 @@ export default function StorySection({ onExploreMenu }) {
             Rooted in Craft. Poured with Care.
           </h2>
           <p className="mt-3 text-[#5E564F] text-base leading-relaxed">
-            Brew &amp; Bean Café started with a simple belief: exceptional coffee shouldn't feel exclusive.
+            {CAFE_CONFIG.name} started with a simple belief: exceptional coffee shouldn't feel exclusive.
           </p>
         </div>
 
@@ -108,7 +109,7 @@ export default function StorySection({ onExploreMenu }) {
                 <p className="text-[10px] text-[#5E564F] font-semibold uppercase mt-0.5">Direct-Trade</p>
               </div>
               <div className="p-3 rounded-2xl bg-white/70 border border-[#38220F]/10 text-center">
-                <p className="font-serif text-xl font-bold text-[#38220F]">6:30 AM</p>
+                <p className="font-serif text-xl font-bold text-[#38220F]">{CAFE_CONFIG.hours.weekday.open}</p>
                 <p className="text-[10px] text-[#5E564F] font-semibold uppercase mt-0.5">Daily Bakes</p>
               </div>
             </div>

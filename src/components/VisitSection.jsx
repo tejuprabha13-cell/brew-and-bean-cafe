@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MapPin, Clock, Phone, Mail, Send, Check, Copy, ExternalLink, Sparkles, AlertCircle } from 'lucide-react';
 import InteractiveMap from './InteractiveMap';
+import { CAFE_CONFIG } from '../data/cafeConfig';
 
 export default function VisitSection() {
   const [formData, setFormData] = useState({
@@ -14,7 +15,7 @@ export default function VisitSection() {
   const [submittedData, setSubmittedData] = useState(null);
 
   const handleCopyAddress = () => {
-    navigator.clipboard.writeText('124 Artisan Way, Coffee District');
+    navigator.clipboard.writeText(CAFE_CONFIG.location.fullAddress);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -61,14 +62,14 @@ export default function VisitSection() {
                   </div>
                   <div>
                     <h3 className="font-serif text-xl font-bold text-[#38220F]">Our Location</h3>
-                    <p className="text-xs text-[#5E564F]">Coffee District Hub</p>
+                    <p className="text-xs text-[#5E564F]">{CAFE_CONFIG.location.district} Hub</p>
                   </div>
                 </div>
 
                 <button
                   onClick={handleCopyAddress}
-                  aria-label="Copy address"
-                  className="px-3 py-1.5 rounded-full bg-white border border-[#38220F]/15 text-xs font-semibold text-[#38220F] flex items-center gap-1.5 hover:bg-[#FAF5E6] transition-colors cursor-pointer"
+                  aria-label="Copy address to clipboard"
+                  className="px-3.5 py-1.5 rounded-full bg-white border border-[#38220F]/15 text-xs font-semibold text-[#38220F] flex items-center gap-1.5 hover:bg-[#FAF5E6] transition-colors cursor-pointer"
                 >
                   {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-[#5E564F]" />}
                   <span>{copied ? 'Copied' : 'Copy'}</span>
@@ -76,11 +77,11 @@ export default function VisitSection() {
               </div>
 
               <div className="mt-4 pt-4 border-t border-[#38220F]/10">
-                <p className="font-semibold text-sm text-[#38220F]">124 Artisan Way</p>
-                <p className="text-xs text-[#5E564F] mt-0.5">Coffee District &bull; Corner of Roaster Lane &amp; Market Square</p>
+                <p className="font-semibold text-sm text-[#38220F]">{CAFE_CONFIG.location.address}</p>
+                <p className="text-xs text-[#5E564F] mt-0.5">{CAFE_CONFIG.location.district} &bull; {CAFE_CONFIG.location.crossStreets}</p>
                 <div className="mt-3 flex items-center gap-3">
                   <a
-                    href="https://maps.google.com/?q=coffee+shop"
+                    href={CAFE_CONFIG.location.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-[#98A886] hover:text-[#38220F] transition-colors"
@@ -109,15 +110,15 @@ export default function VisitSection() {
 
               <div className="space-y-2.5 text-xs pt-2">
                 <div className="flex items-center justify-between pb-2 border-b border-[#38220F]/10">
-                  <span className="font-semibold text-[#38220F]">Monday – Friday</span>
-                  <span className="font-serif font-bold text-sm text-[#38220F]">6:30 AM – 8:00 PM</span>
+                  <span className="font-semibold text-[#38220F]">{CAFE_CONFIG.hours.weekday.days}</span>
+                  <span className="font-serif font-bold text-sm text-[#38220F]">{CAFE_CONFIG.hours.weekday.open} – {CAFE_CONFIG.hours.weekday.close}</span>
                 </div>
                 <div className="flex items-center justify-between pb-2 border-b border-[#38220F]/10">
-                  <span className="font-semibold text-[#38220F]">Saturday – Sunday</span>
-                  <span className="font-serif font-bold text-sm text-[#38220F]">8:00 AM – 9:00 PM</span>
+                  <span className="font-semibold text-[#38220F]">{CAFE_CONFIG.hours.weekend.days}</span>
+                  <span className="font-serif font-bold text-sm text-[#38220F]">{CAFE_CONFIG.hours.weekend.open} – {CAFE_CONFIG.hours.weekend.close}</span>
                 </div>
                 <p className="text-[11px] text-[#5E564F] pt-1">
-                  &bull; Kitchen closes 1 hour prior to coffee bar closing.
+                  &bull; {CAFE_CONFIG.hours.note}
                 </p>
               </div>
             </div>
@@ -125,21 +126,23 @@ export default function VisitSection() {
             {/* Tap-to-Call & Email Card */}
             <div className="grid grid-cols-2 gap-4">
               <a
-                href="tel:5550198372"
+                href={CAFE_CONFIG.contact.phoneTel}
+                aria-label={`Call ${CAFE_CONFIG.name} at ${CAFE_CONFIG.contact.phoneDisplay}`}
                 className="p-4 rounded-3xl glass-card border border-[#38220F]/10 text-center block hover:bg-white transition-all group"
               >
                 <Phone className="w-5 h-5 text-[#98A886] mx-auto mb-2 group-hover:scale-110 transition-transform" />
                 <span className="text-[10px] text-[#5E564F] uppercase font-bold block">Tap to Call</span>
-                <span className="text-xs font-bold text-[#38220F] block mt-0.5">(555) 019-8372</span>
+                <span className="text-xs font-bold text-[#38220F] block mt-0.5">{CAFE_CONFIG.contact.phoneDisplay}</span>
               </a>
 
               <a
-                href="mailto:hello@brewandbeancafe.com"
+                href={CAFE_CONFIG.contact.emailMailto}
+                aria-label={`Email ${CAFE_CONFIG.name}`}
                 className="p-4 rounded-3xl glass-card border border-[#38220F]/10 text-center block hover:bg-white transition-all group"
               >
                 <Mail className="w-5 h-5 text-[#98A886] mx-auto mb-2 group-hover:scale-110 transition-transform" />
                 <span className="text-[10px] text-[#5E564F] uppercase font-bold block">Email Inquiries</span>
-                <span className="text-xs font-bold text-[#38220F] block mt-0.5 truncate">hello@brewandbean...</span>
+                <span className="text-xs font-bold text-[#38220F] block mt-0.5 truncate">{CAFE_CONFIG.contact.email}</span>
               </a>
             </div>
 

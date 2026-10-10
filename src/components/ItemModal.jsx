@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, Sparkles, Flame, MapPin } from 'lucide-react';
 
 export default function ItemModal({ item, onClose }) {
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   if (!item) return null;
 
   return (
     <div 
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="item-modal-title"
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#38220F]/70 backdrop-blur-md animate-in fade-in duration-200"
       onClick={onClose}
     >
@@ -17,7 +28,7 @@ export default function ItemModal({ item, onClose }) {
         <div className="relative h-60 w-full overflow-hidden bg-stone-300">
           <img 
             src={item.image} 
-            alt={item.name}
+            alt={`${item.name} - ${item.description}`}
             className="w-full h-full object-cover" 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#FAF5E6] via-transparent to-transparent" />

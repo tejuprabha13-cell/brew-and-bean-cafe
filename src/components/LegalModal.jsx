@@ -21,6 +21,9 @@ export default function LegalModal({ type, onClose }) {
 
   return (
     <div 
+      role="dialog"
+      aria-modal="true"
+      aria-label={isPrivacy ? 'Privacy Policy Document' : 'Terms of Service Document'}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#38220F]/70 backdrop-blur-md animate-in fade-in duration-200"
       onClick={onClose}
     >

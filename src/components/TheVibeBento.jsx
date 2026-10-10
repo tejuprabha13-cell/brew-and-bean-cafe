@@ -43,7 +43,7 @@ export default function TheVibeBento() {
             <div className="mt-6 md:mt-0 md:absolute md:right-0 md:bottom-0 md:w-5/12 md:h-full overflow-hidden rounded-2xl md:rounded-l-none">
               <img
                 src="/images/cafe-interior.webp"
-                alt="Brew and Bean interior showing brick walls and patrons"
+                alt="Warm café interior at Brew & Bean Café with natural lighting, brick accents, and handcrafted wooden tables"
                 className="w-full h-56 md:h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
               />

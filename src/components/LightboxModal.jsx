@@ -24,6 +24,9 @@ export default function LightboxModal({ item, onClose, onPrev, onNext }) {
 
   return (
     <div 
+      role="dialog"
+      aria-modal="true"
+      aria-label="Photo Lightbox"
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#180E06]/90 backdrop-blur-xl animate-in fade-in duration-200"
       onClick={onClose}
     >

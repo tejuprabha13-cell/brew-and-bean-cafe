@@ -35,12 +35,12 @@ export const galleryItems = [
   },
   {
     id: 'gallery-space-2',
-    category: 'the-space',
-    title: 'The Work Haven',
-    description: 'Over-the-shoulder golden hour perspective: dedicated power outlets and gigabit Wi-Fi at every comfortable table.',
-    image: '/images/hero-home.webp',
+    category: 'the-craft',
+    title: 'The Slow Pour Bar',
+    description: 'Artisan ceramic cups, fresh roasted single-origin Ethiopian beans, and precision bronze pour-over stations at our morning bar.',
+    image: '/images/specialty-coffee-hero.webp',
     featured: false,
-    tag: 'Workspace'
+    tag: 'Brew Bar'
   },
   {
     id: 'gallery-craft-2',

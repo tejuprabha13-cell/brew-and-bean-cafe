@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, Sparkles, Wifi, ShieldCheck, Star, MapPin } from 'lucide-react';
+import { ArrowRight, MapPin, Coffee, Sparkles, Sprout, Flame, Croissant } from 'lucide-react';
+import { CAFE_CONFIG } from '../data/cafeConfig';
 
 export default function Hero({ onExploreMenu, onPlanVisit }) {
   return (
@@ -8,18 +9,18 @@ export default function Hero({ onExploreMenu, onPlanVisit }) {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#98A886]/15 rounded-full blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           
           {/* Left Column: Headlines & CTAs (7 cols) */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+          <div className="lg:col-span-7 space-y-7 text-left">
             
-            {/* 21st.dev Style Pulsing Badge */}
+            {/* Subtle Eyebrow Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF5E6] border border-[#38220F]/15 shadow-sm text-xs font-semibold text-[#38220F]">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#98A886] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#98A886]"></span>
               </span>
-              <span>The Elevated Everyday &bull; Specialty Roastery &amp; Café</span>
+              <span>{CAFE_CONFIG.subtitle} &bull; {CAFE_CONFIG.badge}</span>
             </div>
 
             {/* Main Headline */}
@@ -28,22 +29,23 @@ export default function Hero({ onExploreMenu, onPlanVisit }) {
               <span className="text-[#38220F]/90 italic font-normal">Cozy Corners.</span> <br />
               <span className="relative inline-block">
                 Genuine Connection.
-                <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#98A886]/60" viewBox="0 0 100 12" preserveAspectRatio="none">
+                <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#98A886]/60" viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true">
                   <path d="M0,8 Q50,0 100,6" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
                 </svg>
               </span>
             </h1>
 
-            {/* Subheadline */}
-            <p className="text-base sm:text-lg text-[#5E564F] max-w-xl font-normal leading-relaxed">
-              Your neighborhood retreat for specialty roasts, fresh bites, and a space to simply be. Premium quality without the pretension.
+            {/* Subheadline with improved breathing room */}
+            <p className="text-base sm:text-lg text-[#5E564F] max-w-xl font-normal leading-relaxed pt-1">
+              {CAFE_CONFIG.description}
             </p>
 
-            {/* Dual CTAs with 21st.dev button treatments */}
+            {/* Dual CTAs with clear, accurate destinations */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
                 onClick={onExploreMenu}
-                className="shine-hover group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#98A886] text-[#38220F] text-sm font-bold tracking-wide border-2 border-[#98A886] shadow-md shadow-[#98A886]/20 hover:bg-[#81946F] hover:border-[#81946F] hover:text-white hover:scale-105 transition-all duration-200 cursor-pointer"
+                aria-label="View the craft coffee and food menu"
+                className="shine-hover group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#98A886] text-[#38220F] text-sm font-bold tracking-wide border-2 border-[#98A886] shadow-md shadow-[#98A886]/20 hover:bg-[#81946F] hover:border-[#81946F] hover:text-white hover:scale-105 transition-all duration-200 cursor-pointer"
               >
                 <span>View the Menu</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -51,75 +53,63 @@ export default function Hero({ onExploreMenu, onPlanVisit }) {
 
               <button
                 onClick={onPlanVisit}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-transparent text-[#38220F] text-sm font-bold tracking-wide border-2 border-[#38220F] hover:bg-[#38220F] hover:text-[#F4EBD0] hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm"
+                aria-label="Get directions and view opening hours for Brew and Bean Cafe"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-transparent text-[#38220F] text-sm font-bold tracking-wide border-2 border-[#38220F] hover:bg-[#38220F] hover:text-[#F4EBD0] hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm"
               >
-                <MapPin className="w-4 h-4" />
-                <span>Find Your Seat</span>
+                <MapPin className="w-4 h-4 text-[#98A886]" />
+                <span>Get Directions</span>
               </button>
             </div>
 
-            {/* Micro-Features List */}
-            <div className="pt-4 border-t border-[#38220F]/10 flex flex-wrap items-center gap-6 text-xs text-[#5E564F] font-medium">
+            {/* Genuine Specialty Coffee Hallmarks (No invented ratings or reviews) */}
+            <div className="pt-5 border-t border-[#38220F]/10 flex flex-wrap items-center gap-6 text-xs text-[#5E564F] font-medium">
               <div className="flex items-center gap-2">
-                <Wifi className="w-4 h-4 text-[#98A886]" />
-                <span>1Gbps Gigabit Wi-Fi</span>
+                <Sprout className="w-4 h-4 text-[#98A886]" />
+                <span>Direct-Trade Single Origins</span>
               </div>
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#98A886]" />
-                <span>Abundant Outlets</span>
+                <Flame className="w-4 h-4 text-[#98A886]" />
+                <span>Fresh Weekly Roasts</span>
               </div>
               <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-amber-600 fill-amber-500" />
-                <span>4.9 Star Community Rating</span>
+                <Croissant className="w-4 h-4 text-[#98A886]" />
+                <span>Artisan Morning Bakes</span>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Hero Visual with 21st.dev Floating Stat Cards (5 cols) */}
+          {/* Right Column: Hero Visual - Clean, Editorial, Less Laptop Focus (5 cols) */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
-              {/* Main Visual Image Card */}
-              <div className="relative rounded-3xl overflow-hidden border-4 border-white shadow-2xl bg-stone-200">
-                <img
-                  src="/images/hero-home.webp"
-                  alt="Cozy golden hour laptop workspace with latte art at Brew and Bean Cafe"
-                  className="w-full h-[420px] sm:h-[480px] object-cover hover:scale-105 transition-transform duration-700 ease-out"
-                  fetchPriority="high"
-                />
+              {/* Main Visual Image Card - Large, beautifully cropped, rounded */}
+              <div className="relative rounded-3xl lg:rounded-[2.5rem] overflow-hidden border-4 border-white shadow-2xl bg-stone-200 group">
+                <picture>
+                  <source srcSet="/images/specialty-coffee-hero.webp" type="image/webp" />
+                  <img
+                    src="/images/specialty-coffee-hero.jpg"
+                    alt="Artisan ceramic cup with intricate rosetta latte art beside fresh roasted single-origin coffee beans and pour-over kettle at Brew and Bean Café"
+                    className="w-full h-[420px] sm:h-[500px] lg:h-[540px] object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    fetchPriority="high"
+                    loading="eager"
+                  />
+                </picture>
                 
-                {/* Gradient vignette overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#38220F]/60 via-transparent to-transparent pointer-events-none" />
+                {/* Subtle warm gradient vignette overlay for depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#38220F]/40 via-transparent to-transparent pointer-events-none" />
 
-                {/* Bottom caption in image */}
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <div className="glass-panel p-3 rounded-2xl border border-white/20 text-[#38220F]">
-                    <div className="flex items-center justify-between text-xs font-semibold">
-                      <span>The Focus Nook</span>
-                      <span className="text-[#98A886] font-bold">124 Artisan Way</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Top-Right Floating Pill Badge */}
-              <div className="absolute -top-4 -right-4 hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-2xl glass-panel border border-white/60 shadow-lg text-xs font-bold text-[#38220F] animate-bounce duration-1000">
-                <Sparkles className="w-4 h-4 text-[#98A886]" />
-                <span>Fresh Weekly Roast</span>
-              </div>
-
-              {/* Bottom-Left Floating Stat Card */}
-              <div className="absolute -bottom-5 -left-4 sm:-left-6 p-3.5 rounded-2xl glass-panel border border-white/60 shadow-xl max-w-[220px]">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#98A886] text-[#38220F] flex items-center justify-center font-bold text-sm shadow-sm">
-                    ☕
+                {/* Single Subtle Floating Badge (Restrained, elegant, non-bouncing) */}
+                <div className="absolute bottom-5 left-5 right-5 sm:right-auto flex items-center gap-2.5 px-4 py-2.5 rounded-2xl glass-panel border border-white/60 shadow-lg text-xs font-semibold text-[#38220F] backdrop-blur-md">
+                  <div className="w-6 h-6 rounded-lg bg-[#38220F] text-[#F4EBD0] flex items-center justify-center font-bold text-xs shrink-0">
+                    <Coffee className="w-3.5 h-3.5 text-[#98A886]" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-[#38220F] leading-tight">Velvet Microfoam</p>
-                    <p className="text-[11px] text-[#5E564F] mt-0.5">Steamed to 62°C perfection</p>
+                    <span className="font-bold block leading-tight">Fresh Weekly Roast</span>
+                    <span className="text-[10px] text-[#5E564F] block">Small-Batch Roasted in 12kg Lots</span>
                   </div>
                 </div>
+
               </div>
 
             </div>
@@ -130,3 +120,4 @@ export default function Hero({ onExploreMenu, onPlanVisit }) {
     </section>
   );
 }
+

@@ -111,3 +111,22 @@ h1, h2, h3, h4, .font-serif {
 .leaflet-container {
   background-color: #aad3df !important;
 }
+
+/* Accessibility: Respect user reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  
+  .shine-hover::after {
+    display: none !important;
+  }
+}

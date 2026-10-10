@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Coffee, Phone } from 'lucide-react';
+import { CAFE_CONFIG } from '../data/cafeConfig';
 
 export default function MobileStickyBar({ onNavigate }) {
   return (
@@ -9,7 +10,8 @@ export default function MobileStickyBar({ onNavigate }) {
     >
       <button
         onClick={() => onNavigate('visit')}
-        className="flex-1 py-2 px-2.5 rounded-full bg-white/10 hover:bg-white/20 text-[#F4EBD0] text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+        aria-label="Get directions to the café"
+        className="flex-1 py-2.5 px-2.5 rounded-full bg-white/10 hover:bg-white/20 text-[#F4EBD0] text-xs font-bold flex items-center justify-center gap-1.5 transition-colors cursor-pointer min-h-[44px]"
       >
         <MapPin className="w-3.5 h-3.5 text-[#98A886]" />
         <span>Directions</span>
@@ -17,15 +19,17 @@ export default function MobileStickyBar({ onNavigate }) {
 
       <button
         onClick={() => onNavigate('menu')}
-        className="flex-1 py-2 px-2.5 rounded-full bg-[#98A886] hover:bg-[#81946F] text-[#38220F] text-xs font-bold flex items-center justify-center gap-1.5 shadow-md transition-colors cursor-pointer"
+        aria-label="View our craft coffee menu"
+        className="flex-1 py-2.5 px-2.5 rounded-full bg-[#98A886] hover:bg-[#81946F] text-[#38220F] text-xs font-bold flex items-center justify-center gap-1.5 shadow-md transition-colors cursor-pointer min-h-[44px]"
       >
         <Coffee className="w-3.5 h-3.5" />
         <span>Menu</span>
       </button>
 
       <a
-        href="tel:5550198372"
-        className="flex-1 py-2 px-2.5 rounded-full bg-white/10 hover:bg-white/20 text-[#F4EBD0] text-xs font-bold flex items-center justify-center gap-1.5 transition-colors"
+        href={CAFE_CONFIG.contact.phoneTel}
+        aria-label={`Call ${CAFE_CONFIG.name}`}
+        className="flex-1 py-2.5 px-2.5 rounded-full bg-white/10 hover:bg-white/20 text-[#F4EBD0] text-xs font-bold flex items-center justify-center gap-1.5 transition-colors min-h-[44px]"
       >
         <Phone className="w-3.5 h-3.5 text-[#98A886]" />
         <span>Call</span>
